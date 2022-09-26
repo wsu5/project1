@@ -133,6 +133,24 @@
           </div>
       
           <div id="prediction" class="content-region hide">
+            <h2>Tracking</h2>
+            <h3><Prediction></h3>
+            <p>
+              The overview structure of the prediction pipeline is combined with the Mask R-CNN model results and lane detection output to generate animal detection alert for the vehicle. If the animal falls within the detected lane, the system will send out a ‘STOP’ warning. Otherwise, it will continuously keep track of the animal’s direction of their movements.
+            </p>
+            <p>
+              <img src="predict1.png" alt="pre1 img1">
+            </p>
+            <p>
+              The location of the bounding box is compared with the midpoint of the lane (yellow line above) to distinguish whether the animal is within the danger zone.  
+            </p>
+            
+            <h3>Centroid Tracking Algorithm</h3>
+            <p>
+              This algorithm paves the way to track animal movements over future time frames. Calculations are done by taking Euclidean distance between the centroids of a determined animal over successive frames as clarified ahead. In this system, we track the trajectories of the animal movements by calculating the differences between centroids of the animal within five consecutive frames. Since an image is in 2-dimensional space, the result can be represented as below where µ represents the direction of the animal movements. If the magnitude is over a certain pre-defined threshold, the vector µ is then normalized and stored in a dictionary for each detected animal.
+              <img src="mag1.png" alt="pre1 img1">
+            </p>
+            
             
           </div>
           
